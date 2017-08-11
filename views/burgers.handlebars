@@ -1,8 +1,38 @@
 
-<h2>This is the burgers view</h2>
 
-<p>{{data}}</p>
+	<div class="container col-xs-12">
+		<header class="jumbotron text-center">
+			<h1>What's on the menu</h1>
+		</header>
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h2>Burger Delicatesan</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4" id="queued">
+			{{#each burgers}}
+                {{#if this.devoured}}
+                {{else}}
+                    <h3>{{this.burgerName}}</h3>
+                {{/if}}
+            {{/each}}
 
-{{#each burgers}}
-<h3>{{this.burgerName}}</h3>
-{{/each}}
+			</div>
+			<div class="col-xs-4">
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Burger Name</label>
+						<input type="email" class="form-control" placeholder="burger name">
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-4" id="devoured">
+			{{#each burgers}}
+                {{#if this.devoured}}
+                    <h3>{{this.burgerName}}</h3>
+                {{/if}}
+            {{/each}}				
+			</div>
+		</div>
+	</div>

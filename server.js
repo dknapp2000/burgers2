@@ -7,7 +7,7 @@ const bodyparser = require( "body-parser" );
 const exphbs = require( "express-handlebars" );
 const methoverride = require( "method-override" );
 const expstatic = require( "express-static" );
-const mysql = require( "mysql" );
+const mydb = require( "./db/mydb.js" );
 
 const app = express();
 
@@ -21,19 +21,21 @@ app.set('view engine', 'handlebars');
 
 app.get( "/", function( req, res ) {
     console.log( "GET:/" );
-    mydb.getAll( function( burgerList ) {
+    mydb.getAllBurgers( function( burgerList ) {
+        console.log( burgerList );
+        // res.json( burgerList );
         res.render( "burgers.handlebars", {
             data: "somedata",
             burgers: burgerList
         });
-        res.redirect( "/" );
     })
-    // res.json( { status: "OK" } );
 });
 
 app.post( "/add", function( req, res ) {
     console.log( req.body );
-    res.json( { status: "OK" } );
+    mydb.addOneBurger( req.body.burgername, function() {
+        res.redirect( "/" );
+    })
 })
 
 app.delete( "/:id", function( req, res ) {

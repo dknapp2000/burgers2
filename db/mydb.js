@@ -19,18 +19,12 @@ let db = mysql.createConnection( {
 	"database": config.database
 });
 
-db.query( "SELECT * FROM burger", function( err, results ) {
-    if ( err ) throw err;
-
-    console.log( results );
-
-})
-
-mydb.getAllBurgers = function() {
+mydb.getAllBurgers = function( cb) {
+    console.log( "getAllBurgers" );
     db.query( "SELECT * FROM burger", function( err, results ) {
         if ( err ) throw err;
 
-        return results;
+        cb( results );
     })
 };
 
@@ -50,6 +44,8 @@ mydb.addOneBurger = function( burgerName, cb ) {
     })
 }
 
+module.exports = mydb;
+
 // Testing here
 /*
 mydb.addOneBurger( "BenBurger", function( results ) {
@@ -61,4 +57,11 @@ mydb.addOneBurger( "BenBurger", function( results ) {
     })
 
 });
+
+db.query( "SELECT * FROM burger", function( err, results ) {
+    if ( err ) throw err;
+
+    console.log( results );
+
+})
 */
