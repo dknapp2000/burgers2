@@ -6,8 +6,8 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require( "../config/config.js" )[env];
 var id = 0;
 
-console.log( "Environment = " + env );
-console.log( config );
+// console.log( "Environment = " + env );
+// console.log( config );
 
 const mydb = {};
 
@@ -20,7 +20,7 @@ let db = mysql.createConnection( {
 });
 
 mydb.getAllBurgers = function( cb) {
-    console.log( "getAllBurgers" );
+    //console.log( "getAllBurgers" );
     db.query( "SELECT * FROM burger", function( err, results ) {
         if ( err ) throw err;
 
