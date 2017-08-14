@@ -15,6 +15,7 @@
                 {{#if this.devoured}}
                 {{else}}
                     <h3 data-id="{{this.id}}">{{this.burgerName}}</h3>
+					<button id="burger-{{this.id}}" data-id="{{id}}" type="button" class="btn btn-light burger-btn">Smash!</button>
                 {{/if}}
             {{/each}}
 
@@ -23,8 +24,9 @@
 				<form>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Burger Name</label>
-						<input type="email" class="form-control" placeholder="burger name">
+						<input id="burger-name-input" type="text" class="form-control" placeholder="burger name">
 					</div>
+					<button id="btn-add-burger" type="input" class="btn btn-primary">Add the burger</button>
 				</form>
 			</div>
 			<div class="col-xs-4" id="devoured">
